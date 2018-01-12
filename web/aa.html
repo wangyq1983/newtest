@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+    <TITLE> New Document </TITLE>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <script src="jquery.js"></script>
+    <script type="text/javascript" src="</script'>http://jquery-rotate.googlecode.com/files/jquery.rotate.1-1.js"></script>
+    <script type='text/javascript'>
+        var size=0;
+
+
+        //放大缩小图片
+        function imgToSize(size) {
+            var img = $("#Imgbox");
+            var oWidth=img.width(); //取得图片的实际宽度
+            var oHeight=img.height(); //取得图片的实际高度
+            img.width(oWidth + size);
+            img.height(oHeight + size/oWidth*oHeight);
+        }
+
+
+        // 翻转图片
+        function imgReverse(arg) {
+            var img = $("#Imgbox");
+            if (arg == 'h')
+            {
+                img.css( {'filter' : 'fliph','-moz-transform': 'matrix(-1, 0, 0, 1, 0, 0)','-webkit-transform': 'matrix(-1, 0, 0, 1, 0, 0)'} );
+            }else{
+                img.css( {'filter' : 'flipv','-moz-transform': 'matrix(1, 0, 0, -1, 0, 0)','-webkit-transform': 'matrix(1, 0, 0, -1, 0, 0)'} );
+            }
+        }
+
+    </script>
+
+</HEAD>
+
+<BODY>
+<img id='Imgbox' src='https://img.haimawan.com/vimg/201702/20/9d6ca8ad-60f8-e9dd-f445-c0909a677020.jpg'  style="position:relative; zoom:100%;  cursor:move;"/>
+<br />
+<input type="button" value="放大" onclick="imgToSize(50)" >
+<input type="button" value="缩小" onclick="imgToSize(-50);">
+<input type="button" value="向右旋转" onclick="$('#Imgbox').rotateRight(-15)">
+<input type="button" value="向左旋转" onclick="$('#Imgbox').rotateRight(15);">
+<input type="button" value="水平翻转" onclick="imgReverse('h');">
+<input type="button" value="垂直翻转" onclick="imgReverse('v');">
+
+</BODY>
+</HTML>

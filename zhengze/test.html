@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则练习</title>
+</head>
+<body>
+
+    <div id="res">
+
+    </div>
+
+    <script>
+        var testValue = "1212word3121";
+
+        //正则表达式生成方式
+
+        var reg=new RegExp('word','g');
+
+        //var reg=new RegExp('^[0-9]{1,20}$','g');
+
+        //var reg=/^[0-9]/g;
+
+        // 字符串的正则方法有：match()、replace()、search()、split()
+        // 正则对象的方法有：exec（）、test（）
+        // test match
+        console.log(typeof testValue.match(reg));
+
+        //document.querySelector('#res').innerHTML = testValue.match(reg);
+        //document.querySelector('#res').innerHTML = testValue.replace(reg,'www');
+        //document.querySelector('#res').innerHTML = testValue.search(reg);
+        document.querySelector('#res').innerHTML = testValue.split(reg);
+
+        //document.querySelector('#res').innerHTML = reg.test(testValue);
+        //document.querySelector('#res').innerHTML = reg.exec(testValue);
+
+    </script>
+</body>
+</html>
