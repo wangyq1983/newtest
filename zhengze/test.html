@@ -11,29 +11,28 @@
     </div>
 
     <script>
-        var testValue = "1212word3121";
-
+        var testValue = "1212words3121";
+        var str = "6abc123def9";
         //正则表达式生成方式
 
-        var reg=new RegExp('word','g');
+        //var reg=new RegExp('[0-9]+','g');
 
         //var reg=new RegExp('^[0-9]{1,20}$','g');
 
-        //var reg=/^[0-9]/g;
+        var reg=/^\d*\d$/g;
 
         // 字符串的正则方法有：match()、replace()、search()、split()
         // 正则对象的方法有：exec（）、test（）
         // test match
-        console.log(typeof testValue.match(reg));
+        //console.log(typeof testValue.match(reg));
 
-        //document.querySelector('#res').innerHTML = testValue.match(reg);
+        //document.querySelector('#res').innerHTML = str.match(reg);
         //document.querySelector('#res').innerHTML = testValue.replace(reg,'www');
-        //document.querySelector('#res').innerHTML = testValue.search(reg);
-        document.querySelector('#res').innerHTML = testValue.split(reg);
+        //document.querySelector('#res').innerHTML = str.search(reg);
+        //document.querySelector('#res').innerHTML = testValue.split(reg);
 
-        //document.querySelector('#res').innerHTML = reg.test(testValue);
-        //document.querySelector('#res').innerHTML = reg.exec(testValue);
-
+        document.querySelector('#res').innerHTML = reg.test(str);
+        //document.querySelector('#res').innerHTML = reg.exec(str);
     </script>
 </body>
 </html>
