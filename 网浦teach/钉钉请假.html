@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>请假审批</title>
+    <style>
+        *{ margin: 0; padding: 0;}
+        .box,#show{
+            width:1000px; height:50px; margin: 20px auto;
+        }
+        select,input,button{ height: 30px; line-height: 30px; font-size: 14px; padding: 0 10px;}
+    </style>
+</head>
+<body>
+<div class="box">
+    <select id="peopleType">
+        <option value ="产品">产品</option>
+        <option value ="研发">研发</option>
+    </select>
+    <input type="text" id="leaveDays" placeholder="请输入请假天数">
+    <button id="btn">查看审批人</button>
+</div>
+<div id="show">
+
+</div>
+
+<script>
+    var btn = document.getElementById('btn');
+    var peopleType = document.getElementById('peopleType');
+    var leaveDays = document.getElementById('leaveDays');
+    var show = document.getElementById('show');
+    function renderShow(typeValue,dayValue) {
+        var dayValue = Number(dayValue);
+        var showOk;
+        if(dayValue<=1){
+            if(typeValue == '产品'){
+                showOk = "小组长 => 杜琳"
+            }else if(typeValue == '研发'){
+                showOk = "小组长 => 孙全民"
+            }
+        }else if(dayValue>1 && dayValue<=3){
+            if(typeValue == '产品'){
+                showOk = "小组长 => 杜琳 => 印丽 => 张博"
+            }else if(typeValue == '研发'){
+                showOk = "小组长 => 孙全民 => 杜琳 => 印丽 => 张博"
+            }
+        }else if(dayValue>3){
+            if(typeValue == '产品'){
+                showOk = "小组长 => 杜琳 => 印丽 => 张博 => 党总"
+            }else if(typeValue == '研发'){
+                showOk = "小组长 => 孙全民 => 杜琳 => 印丽 => 张博 => 党总"
+            }
+        }else{
+            showOk = '输入错误'
+        }
+        var showOk = showOk + '<br />' + '抄送文浩';
+        return showOk;
+    }
+    btn.onclick=function () {
+        var typeValue = peopleType.value;
+        var dayValue = leaveDays.value;
+        //alert(typeValue+'+'+dayValue)
+        show.innerHTML = renderShow(typeValue,dayValue);
+    }
+</script>
+</body>
+</html>
