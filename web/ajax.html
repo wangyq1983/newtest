@@ -11,7 +11,7 @@
             //渲染数据
             function renderList(res) {
                 res.data.forEach(function (el,index) {
-                    console.log(el);
+//                    console.log(el);
                     var detailHref = 'detail.html?cid=' + el.cid;
                     var liItem = '<li><a href='+detailHref+'>'+el.name+'</a></li>';
                     $('#lists').append(liItem);
@@ -25,9 +25,9 @@
                     var endPage = 10;
                 }else{
                     var pageNumber = pageSearch.split('=');
-                    console.log(typeof pageNumber[1]);
+                    //console.log(typeof pageNumber[1]);
                     var startPage = (Number(pageNumber[1])-1)*pageStep+1;
-                    var endPage = startPage + 10;
+                    var endPage = startPage + 9;
                 }
                 var params = {
                     from:startPage,
@@ -55,8 +55,6 @@
     <div class="pages">
 
     </div>
-
-
     <!--<button id="clickMe">click</button>-->
 </body>
 </html>

@@ -3,9 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="jquery.js"></script>
+    <script>
+        $(function () {
+            $(document).on('keyup','#inputPage',function (e) {
+                if(e.keyCode == 13){
+                    console.log($('#inputPage').val());
+                    var pageNum = $('#inputPage').val();
+                    window.location.href = window.location.pathname + '?page=' + pageNum;
+                }
+            });
+        })
+    </script>
 </head>
 <body>
 <script>
+
+
+
     var obj1 = {
         from:1,
         to:10,
@@ -52,5 +67,6 @@
     <option value="4">4</option>
     <option value="5">5</option>
 </select>
+<input type="text" id="inputPage" />
 </body>
 </html>

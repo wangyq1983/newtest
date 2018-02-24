@@ -41,7 +41,7 @@ console.log('当前页面'+Request.page);
 function pageFunc() {
     var pageLength = Math.ceil(pageAll/pageStep);
     var pageArr = [];
-    var nowPage = Number(Request.page);
+    var nowPage = Number(Request.page?Request.page:1);
     for(var i = nowPage; i > (nowPage-5); i--){
         pageArr.push(i);
         if((nowPage-5) <= 1){
@@ -66,7 +66,7 @@ function pageFunc() {
 
     function createPage(x) {
             var parm = window.location.pathname+'?page='+x;
-            if(x == Request.page){
+            if(x == (Request.page?Request.page:1)){
                 var pageStyle = "pageCurrent";
             }else{
                 var pageStyle = "pageNum";
@@ -75,7 +75,6 @@ function pageFunc() {
     }
 
     var pageList = pArr.map(createPage);
-    console.log(pageList);
 
     //上一页
     var prevPage = "<a class='prevPage' href='javascript:;'>上一页</a>";
@@ -85,6 +84,8 @@ function pageFunc() {
     var firstPage = "<a class='firstPage' href=''>首页</a>";
     //尾页
     var endPage = "<a class='endPage' href=''>尾页</a>";
+
+    var inputPage = "<input class='inputPage' />";
 
     var selectOption = [];
     for(var i = 1; i <= pageLength; i++){
@@ -98,19 +99,20 @@ function pageFunc() {
     }
 
     var selectPage = "<select class='selectPage'>" + selectOption + "</select>";
-
     var pagelb = "<span class='pagelb'></span>";
-    var pageWarp = firstPage+prevPage+pagelb+nextPage+endPage+selectPage;
+    var pageWarp = firstPage+prevPage+pagelb+nextPage+endPage+selectPage+inputPage;
 
-    //console.log(selectOption + typeof JSON.stringify(selectOption));
-    // $('.selectPage').append(JSON.stringify(selectOption));
-    // $('.selectPage').append(tempOption);
-    console.log($('.selectPage').html());
-    // $('.selectPage').on('change',function () {
-    //     window.location = window.location.pathname + '?page=' + this.value;
-    // });
+    $(document).on('keyup','.inputPage',function (e) {
+        if(e.keyCode == 13){
+            var pageNum = $('.inputPage').val();
+            window.location.href = window.location.pathname + '?page=' + pageNum;
+        }
+    });
 
-
+    $(document).on('change','.selectPage',function () {
+        console.log(this.value);
+        window.location = window.location.pathname + '?page=' + this.value;
+    });
 
     $('.pages').append(pageWarp);
     $('.pagelb').append(pageList);
@@ -132,10 +134,6 @@ function pageFunc() {
     $('.nextPage').attr('href',nextPageNum);
     $('.firstPage').attr('href',firstPageNum);
     $('.endPage').attr('href',endPageNum);
-
-
-
-
 }
 
 //obj格式转str格式
@@ -152,7 +150,6 @@ function objToStr(obj) {
     }
     return strParmas;
 }
-
 
 /**
  * 列表get请求
