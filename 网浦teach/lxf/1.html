@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filter</title>
+</head>
+<body>
+<script>
+//    var arr = [1,2,3,1,1,2]
+//    var aa = arr.filter(function (el,index,self) {
+//        return self.indexOf(el) === index;
+//    })
+//    console.log(aa);
+
+function get_primes(arr) {
+    var res;
+    res = arr.filter(x=>{
+        if (x === 1) return false;
+        for (let i = 2;i<x;i++){
+        if (x % i == 0){
+            return false;
+        }
+    }
+    return true;
+    });
+    return res;
+}
+// 测试:
+//var
+//        x,
+//        r,
+//        arr = [];
+//for (x = 1; x < 100; x++) {
+//    arr.push(x);
+//}
+//r = get_primes(arr);
+//if (r.toString() === [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97].toString()) {
+//    console.log('测试通过!');
+//} else {
+//    console.log('测试失败: ' + r.toString());
+//}
+
+
+var x,arr = [];
+for (x = 1; x < 100; x++) {
+    arr.push(x);
+}
+console.log(get_primes(arr))
+</script>
+</body>
+</html>

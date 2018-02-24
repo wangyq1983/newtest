@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    function sum(arr) {
+//
+//        var sum1 = function () {
+//            return(
+//                    arr.reduce(function (x,y) {
+//                        return x+y;
+//                    })
+//            )
+//        }
+//        return sum1;
+//
+//    }
+//    var aaa = sum([1,2,3])
+//    console.log(aaa);
+
+function count() {
+    var arr = [];
+    for (var i=1; i<=3; i++) {
+        arr.push(function () {
+            return i * i;
+        });
+    }
+    return arr;
+}
+
+var results = count();
+var f1 = results[0];
+var f2 = results[1];
+var f3 = results[2];
+console.log(f1());
+console.log(f2());
+console.log(f3());
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var obj1 = {
+        from:1,
+        to:10,
+        type:1
+    };
+
+    function objToStr(obj) {
+        var strParmas ='';
+        var firstP = 1;
+        for(var p in obj){
+            var linkAdd = "";
+            if(firstP == 0){
+                linkAdd = '&';
+            }
+            strParmas = strParmas + linkAdd + p + '=' + obj1[p];
+            firstP = 0;
+        }
+        return strParmas;
+    }
+
+    var t1 = objToStr(obj1);
+    console.log(t1);
+
+    window.onload = function () {
+        var selectPage = document.getElementById('selectPage');
+        selectPage.addEventListener("change",function () {
+            window.location = window.location.pathname + '?page=' + this.value;
+        },false);
+    };
+
+//    $('.selectPage').on('change',function () {
+//        window.location = this.value;
+//    })
+
+</script>
+<select id="ttt">
+    <option value="123">123</option>
+    <option value="333">333</option>
+</select>
+<select name="" id="selectPage">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3" selected>3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+</select>
+</body>
+</html>

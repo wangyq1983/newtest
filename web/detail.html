@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,menu,nav,section {margin:0;padding:0;}
+        body{font-family:Tahoma,Arial,'Helvetica Neue',"Microsoft YaHei New","Microsoft Yahei","寰蒋闆呴粦","瀹嬩綋",Simsum,STXihei,"鍗庢枃缁嗛粦",sans-serif;}
+        ul,li{ list-style:none}
+        fieldset,img {border:0;}
+        input{outline:medium}
+        a{ text-decoration: none;}
+        a:hover{-webkit-transition:all .2s linear}
+        em{ font-style: normal}
+        .fl{ float:left}
+        .fr{ float:right}
+        .clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden }
+        .clearfix { zoom: 1; display: inline-block; _height: 1px }
+        *html .clearfix { height: 1% }
+        *+html .clearfix { height: 1% }
+        .clearfix { display: block }
+        .overflow_h{ overflow: hidden; display: block; white-space: nowrap; text-overflow: ellipsis}
+
+        .loading{
+            width:200px; height: 36px; line-height: 36px; text-align: center;
+            position: fixed; top:20px; left:50%; z-index: 9; margin-left: -100px;
+        }
+
+    </style>
+    <script src="jquery.js"></script>
+    <script src="jsTools/render.js"></script>
+    <script>
+        $(function () {
+            function renderDetail(res) {
+                console.log(res)
+            }
+
+            function initPage() {
+                var pageSearch = window.location.search;
+                if(pageSearch ==''){
+                    alert('参数不正确');
+                    return false;
+                }else{
+                    var pageNumber = pageSearch.split('=');
+                }
+                var params = {
+                    cid:pageNumber
+                };
+                dataRep(requestList.cirDetail,params,1,renderDetail);
+            }
+
+            initPage();
+
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.js"></script>
+    <script>
+        $(function () {
+
+            function test1() {
+                console.log(111);
+                $('.aa').trigger("ss");
+            }
+
+            function test2() {
+                console.log(222)
+            }
+
+            function test3() {
+                console.log(333)
+            }
+
+            $('.aa').on('ss',function () {
+                test2();
+                test3();
+            });
+
+            test1()
+
+        })
+    </script>
+</head>
+<body>
+    <div class="aa">11</div>
+    <div class="bb">22</div>
+</body>
+</html>

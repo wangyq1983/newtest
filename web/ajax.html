@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+    <link rel="stylesheet" href="css/init.css" />
+    <script src="jquery.js"></script>
+    <script src="jsTools/render.js"></script>
+    <script>
+        $(function () {
+            //渲染数据
+            function renderList(res) {
+                res.data.forEach(function (el,index) {
+                    console.log(el);
+                    var detailHref = 'detail.html?cid=' + el.cid;
+                    var liItem = '<li><a href='+detailHref+'>'+el.name+'</a></li>';
+                    $('#lists').append(liItem);
+                });
+            }
+
+            function initPage() {
+                var pageSearch = window.location.search;
+                if(pageSearch ==''){
+                    var startPage = 1;
+                    var endPage = 10;
+                }else{
+                    var pageNumber = pageSearch.split('=');
+                    console.log(typeof pageNumber[1]);
+                    var startPage = (Number(pageNumber[1])-1)*pageStep+1;
+                    var endPage = startPage + 10;
+                }
+                var params = {
+                    from:startPage,
+                    to:endPage
+                };
+                pageFunc();
+                dataReq(requestList.cirList,params,1,renderList);
+            }
+            initPage();
+        })
+    </script>
+</head>
+<body>
+
+    <div class="aaa">asdfasfasasdfasdfasdf</div>
+
+    <div id="infos"></div>
+    <ul id="lists">
+
+    </ul>
+    <div id="progress-bar">
+
+    </div>
+
+    <div class="pages">
+
+    </div>
+
+
+    <!--<button id="clickMe">click</button>-->
+</body>
+</html>
