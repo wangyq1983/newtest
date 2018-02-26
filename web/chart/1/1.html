@@ -2,81 +2,164 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>chartDemo</title>
     <style>
-        #test1{
-            width:300px;
-            height: 300px;
+        #tableList{
+            width:1000px;
+            height:250px;
         }
-        #test2{
-            width:360px;
+        #test1,#test2,#test3,#test4{
+            width:246px;
+            height: 246px;
+            float: left;
+        }
+        #test5{
+            width:860px;
             height:360px;
+            margin-top: 50px;
         }
     </style>
     <script src="../Chart.js"></script>
 </head>
 <body>
-<div id="test1">
-    <canvas id="myChart" width="200" height="200"></canvas>
+<div id="tableList">
+    <div id="test1"><canvas id="myChart" width="150" height="150"></canvas></div>
+    <div id="test2"><canvas id="myChart1" width="200" height="200"></canvas></div>
+    <div id="test3"><canvas id="myChart3" width="200" height="200"></canvas></div>
 </div>
-<div id="test2">
-    <canvas id="myChart2" width="200" height="200"></canvas>
+
+<div id="test5">
+    <canvas id="myChart2" width="860" height="360"></canvas>
 </div>
+
 <script>
+
     var ctx = document.getElementById("myChart").getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+            labels: ["美团", "百度外卖", "饿了吗"],
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: '',
+                data: [234433, 312344, 111331],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(50, 164, 255, 1)',
+                    'rgba(255, 45, 76, 1)',
+                    'rgba(25, 206, 179, 1)'
                 ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
+                borderColor:'#ffffff',
             }]
         },
         options: {
             scales: {
                 yAxes: [{
+                    display:false,
                     ticks: {
                         beginAtZero:true
-                    }
-                }]
+                    },
+            }],
+            },
+            legend:{
+                display: false
+            },
+
+        }
+    });
+
+    var huan = document.getElementById("myChart1").getContext('2d');
+    var myChart = new Chart(huan,{
+        type: 'doughnut',
+        // 数据集
+        data: {
+            labels: ["美团", "百度外卖", "饿了吗"],
+            datasets: [{
+                label: "My First dataset",
+                backgroundColor: [
+                    'rgba(50, 164, 255, 1)',
+                    'rgba(255, 45, 76, 1)',
+                    'rgba(25, 206, 179, 1)'
+                ],
+                data: [234433, 312344, 111331],
+            }]
+        },
+        // 配置项
+        options: {
+            scaleShowLabels: false,
+            legend:{
+                display: false
             }
         }
     });
+
+    var zhu = document.getElementById("myChart3").getContext('2d');
+    var myChart = new Chart(zhu,{
+        type: 'bar',
+        // 数据集
+        data: {
+            labels: ["美团", "百度外卖", "饿了吗"],
+            datasets: [{
+                label: '',
+                data: [234433, 312344, 111331],
+                backgroundColor: [
+                    'rgba(50, 164, 255, 1)',
+                    'rgba(255, 45, 76, 1)',
+                    'rgba(25, 206, 179, 1)'
+                ]
+            }]
+        },
+        // 配置项
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true,
+                        gridLines: {
+                            offsetGridLines: true
+                        }
+                    },
+                }]
+            },
+            legend:{
+                display: false //不显示labels
+            }
+        }
+    });
+
 
     var ctx1 = document.getElementById("myChart2").getContext('2d');
     var myChart = new Chart(ctx1,{
         type: 'line',
         // 数据集
         data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            labels: [
+                '27-09','28-09','29-09','30-09','01-10','02-10','03-10','04-10'
+            ],
             datasets: [{
-                label: "My First dataset",
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [0, 10, 5, 2, 20, 30, 45],
+                label: "美团",
+                borderColor: '#62abf7',
+                backgroundColor:'rgba(98,171,247,0.5)',
+                data: [0, 10, 5, 2, 20, 30, 45,20]
+            },{
+                label: "百度外卖",
+                borderColor: '#6a6aca',
+                backgroundColor:'rgba(106,106,202,0.5)',
+                data: [20, 30, 33, 21, 16, 15, 20,50]
+            },{
+                label: "饿了么",
+                borderColor: '#76cc75',
+                backgroundColor:'rgba(118,204,117,0.5)',
+                data: [10, 22, 42, 21, 16, 15, 20,50]
+            },{
+                label: "全部",
+                borderColor: '#f0f0ee',
+                backgroundColor:'rgba(240,240,240,0.5)',
+                data: [30, 72, 82, 91, 76, 75, 80,90]
             }]
         },
         // 配置项
         options: {}
-    })
+    });
+
 </script>
 </body>
 </html>
